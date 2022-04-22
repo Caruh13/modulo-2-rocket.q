@@ -2,6 +2,10 @@ import Modal from './modal.js'
 
 const modal = Modal()
 
+const modalTitle = document.querySelector('.modal h2')
+const modalDescription = document.querySelector('.modal p')
+const modalButton = document.querySelector('.modal button')
+
 // PEGAR TODOS OS BOTÕES QUE EXISTE COM A CLASSE CHECK
 const checkButtons = document.querySelectorAll('.actions a.check')
 
@@ -9,15 +13,23 @@ const checkButtons = document.querySelectorAll('.actions a.check')
 
 checkButtons.forEach(button => {
   //adicionar a escuta
-  button.addEventListener('click', event => {
-    // ABRIR MODAL
-    modal.open()
-  })
+  button.addEventListener('click', handleClick)
 })
 
-// /*Quando o botão delete for clicado ele abre a modal */
-// const deleteButton = document.querySelectorAll('.actions a.delete')
+const deleteButton = document.querySelectorAll('.actions a.delete')
 
-// deleteButton.forEach(button => {
-//   button.addEventListener('click', event => handleClick(event, false))
-// })
+deleteButton.forEach(button => {
+  button.addEventListener('click', event => handleClick(event, false))
+})
+
+function handleClick(event, check = true) {
+  event.preventDefault()
+  const text = check ? 'Marcar como lida' : 'Excluir'
+
+  modalTitle.innerHTML = `${text} esta pergunta`
+  modalDescription.innerHTML = `Tem certeza que deseja ${text.toLowerCase()} esta pergunta?`
+  modalButton.innerHTML = `Sim, ${text.toLowerCase()}`
+  check ? modalButton.classList.remove('red') : modalButton.classList.add('red')
+
+  modal.open()
+}
