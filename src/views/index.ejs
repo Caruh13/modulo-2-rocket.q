@@ -9,8 +9,8 @@
 
 <!-- CSS -->
 
-<link rel="stylesheet" href="styles/global.css">
-<link rel="stylesheet" href="styles/home.css">
+<link rel="stylesheet" href="/styles/global.css">
+<link rel="stylesheet" href="/styles/home.css">
 
 <!-- FONTS -->
 
@@ -23,7 +23,9 @@
   <div id="home" class="content">
 
     <header>
-      <img src="images/logo.svg" alt="modulo2 logo">
+     <a href="/"> 
+       <img src="/images/logo.svg" alt="modulo2 logo">
+     </a>
     </header>
 <div id="bg">
   <div class="ball top"></div>
@@ -32,28 +34,9 @@
    <main>
      <div>
        <div class="container">
-         <section>
-           <h2>Entre como participante</h2>
-           <form action="">
-           <label class="sr-only" for="room-id">Código da sala</label>
-             <input type="number" id="room-id" placeholder="Código da sala">
-             <button>
-             <img src = "images/enter-room.svg" alt= "Entrar na sala">Entrar na sala </button>
-            </form>
-          </section>
-         
-         <div class="separator">
-           <div></div>
-           <div>ou</div>
-           <div></div>
-         </div>
-         <section>
-           <h2>Crie sua própria sala</h2>
-           <a href="/modulo-2.html" class="button outlined">
-             <img src="images/users.svg" alt="Criar Sala">
-             Criar Sala
-           </a>
-         </section>
+        <!-- VAI RENDERIZAR A PARTE CORRETA DE ACORDO COM A URL -->
+        <%- include(`parts/${page}`)%> 
+
        </div>
    </main>
 
